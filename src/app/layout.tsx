@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { DM_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
@@ -24,8 +25,8 @@ export const metadata: Metadata = {
   description:
     'VIEHORA TRAVEL - Beyond Every Horizon. Khám phá Việt Nam và thế giới qua những hành trình an toàn, gần gũi và bền vững.',
   icons: {
-    icon: '/assets/img/viehora-mark.svg',
-    apple: '/assets/img/viehora-mark.svg',
+    icon: '/assets/img/viehora-logo.jpg',
+    apple: '/assets/img/viehora-logo.jpg',
   },
 };
 
@@ -37,7 +38,9 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${dmSans.variable} ${playfair.variable}`}>
       <body>
-        <Header />
+        <Suspense fallback={null}>
+          <Header />
+        </Suspense>
         <div id="page" className="site-main-content">
           {children}
         </div>

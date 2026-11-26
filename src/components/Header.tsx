@@ -28,13 +28,16 @@ export default function Header() {
       <header className="vh-header">
         <div className="container vh-nav-bar">
           <Link href="/" className="vh-brand" aria-label="VIEHORA TRAVEL trang chủ" onClick={closeMenu}>
-            <span className="vh-brand-mark">
-              V<span>✦</span>
-            </span>
-            <span className="vh-brand-copy">
-              <strong>VIEHORA</strong>
-              <small>TRAVEL</small>
-            </span>
+            <img
+              src="/assets/img/viehora-logo.jpg"
+              alt="VIEHORA TRAVEL Logo"
+              style={{
+                height: '54px',
+                width: 'auto',
+                objectFit: 'contain',
+                borderRadius: '6px',
+              }}
+            />
           </Link>
 
           <nav className={`vh-nav-menu ${mobileOpen ? 'is-active' : ''}`}>

@@ -311,11 +311,7 @@ export const ARTICLES: ArticleItem[] = [
 ];
 
 export const HERO_SLIDES = [
-  '/assets/img/about-hero-bg.png',
-  '/assets/img/visa-hero-bg.png',
-  '/assets/img/flight-hero-bg.png',
-  '/assets/img/flight-domestic.png',
-  '/assets/img/flight-international.png',
+  '/assets/img/viehora-hero-hd.jpg',
 ];
 
 export const BRAND_INFO = {

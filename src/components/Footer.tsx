@@ -24,35 +24,16 @@ export default function Footer() {
             <Link
               href="/"
               aria-label="VIEHORA TRAVEL Trang chủ"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}
+              style={{ display: 'inline-block', marginBottom: '16px', background: '#ffffff', padding: '8px 14px', borderRadius: '10px' }}
             >
-              <span
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  border: '1.5px solid var(--gold)',
-                  borderRadius: '50%',
-                  display: 'grid',
-                  placeItems: 'center',
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '26px',
-                  fontWeight: 600,
-                  color: '#ffffff',
-                  position: 'relative',
-                }}
-              >
-                V
-                <span style={{ position: 'absolute', color: 'var(--gold)', fontSize: '10px', right: '5px', top: '4px' }}>
-                  ✦
-                </span>
-              </span>
-              <span className="vh-brand-copy">
-                <strong style={{ color: '#ffffff', fontSize: '18px' }}>VIEHORA</strong>
-                <small style={{ color: 'var(--gold)' }}>TRAVEL</small>
-              </span>
+              <img
+                src="/assets/img/viehora-logo.jpg"
+                alt="VIEHORA TRAVEL Logo"
+                style={{ height: '58px', width: 'auto', objectFit: 'contain' }}
+              />
             </Link>
             <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#9fb0c4', margin: '0 0 18px' }}>
-              VIEHORA TRAVEL — Beyond Every Horizon. Mang đến những hành trình an toàn, gần gũi và bền vững trên khắp Việt Nam và thế giới.
+              <strong>CÔNG TY TNHH DU LỊCH VÀ LỮ HÀNH CHÂN TRỜI VIÊN MÃN</strong> — VIEHORA TRAVEL (Beyond Every Horizon). Mang đến những hành trình an toàn, gần gũi và bền vững.
             </p>
             <div style={{ display: 'flex', gap: '14px', fontSize: '11px', letterSpacing: '0.14em', color: 'var(--gold)', fontWeight: 700 }}>
               <a href={`mailto:${BRAND_INFO.email}`}>EMAIL ↗</a>

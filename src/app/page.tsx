@@ -7,13 +7,8 @@ import WhyChooseSection from '@/components/home/WhyChooseSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import BlogAndNewsSection from '@/components/home/BlogAndNewsSection';
 import TrustAndPartnersSection from '@/components/home/TrustAndPartnersSection';
-import { getToursByCategory } from '@/data/tours';
 
 export default function HomePage() {
-  const domesticTours = getToursByCategory('trong-nuoc');
-  const internationalTours = getToursByCategory('nuoc-ngoai');
-  const pilgrimageTours = getToursByCategory('hanh-huong');
-
   return (
     <>
       <HeroSection />
@@ -24,22 +19,22 @@ export default function HomePage() {
           eyebrow="KHÁM PHÁ VIỆT NAM"
           title="Tour du lịch"
           highlight="trong nước"
+          categorySlug="trong-nuoc"
           categoryLink="/category/trong-nuoc"
-          tours={domesticTours}
         />
         <TourSection
           eyebrow="VƯƠN TẦM THẾ GIỚI"
           title="Tour du lịch"
           highlight="quốc tế"
+          categorySlug="nuoc-ngoai"
           categoryLink="/category/nuoc-ngoai"
-          tours={internationalTours}
         />
         <TourSection
           eyebrow="TRỌN VẸN TÂM LINH"
           title="Tour du lịch"
           highlight="hành hương"
+          categorySlug="hanh-huong"
           categoryLink="/category/hanh-huong"
-          tours={pilgrimageTours}
         />
         <VisaMarqueeSection />
       </main>

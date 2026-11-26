@@ -160,7 +160,7 @@ a {
 .vh-nav-menu ul {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 15px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -171,15 +171,16 @@ a {
 }
 
 .vh-nav-menu > ul > li > a {
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--navy);
   padding: 8px 2px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -360,11 +361,11 @@ a {
 /* ── Editorial Hero ───────────────────────────────────────────────────────── */
 .vh-hero {
   position: relative;
-  min-height: 600px;
+  min-height: min(56.25vw, 760px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 64px 0 90px;
+  padding: 56px 0 96px;
   color: var(--white);
   overflow: hidden;
   background: var(--navy-deep);
@@ -379,13 +380,18 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
+  object-position: center center;
 }
 
 .vh-hero-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7, 25, 46, 0.88) 0%, rgba(16, 43, 78, 0.58) 55%, rgba(7, 25, 46, 0.25) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(7, 25, 46, 0.72) 0%,
+    rgba(16, 43, 78, 0.36) 52%,
+    rgba(7, 25, 46, 0.06) 100%
+  );
   z-index: 2;
 }
 
