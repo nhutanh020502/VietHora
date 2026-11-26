@@ -75,11 +75,9 @@ function SearchResultsInner() {
         <div>
           <label className="vh-filter-label">Dòng tour</label>
           <select name="cat" defaultValue={cat} className="vh-filter-select">
-            <option value="">Tất cả dòng tour</option>
+            <option value="">Tất cả Tour Trong Nước</option>
             <option value="trong-nuoc">Tour Trong Nước</option>
-            <option value="nuoc-ngoai">Tour Nước Ngoài</option>
-            <option value="hanh-huong">Tour Hành Hương</option>
-            <option value="gia-re">Tour Giá Sốc</option>
+            <option value="gia-re">Tour Giá Tốt</option>
           </select>
         </div>
 

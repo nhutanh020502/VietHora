@@ -1,13 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { HERO_SLIDES } from '@/data/content';
 
 export default function HeroSection() {
   const router = useRouter();
-  const [activeSlide, setActiveSlide] = useState(0);
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const [q, setQ] = useState('');
@@ -16,13 +13,6 @@ export default function HeroSection() {
   const [startDate, setStartDate] = useState('');
   const [priceRange, setPriceRange] = useState('');
   const [durationRange, setDurationRange] = useState('');
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -37,67 +27,29 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="vh-hero">
-      <div className="vh-hero-bg">
-        {HERO_SLIDES.map((imgUrl, index) => (
-          <div
-            key={imgUrl + index}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: index === activeSlide ? 1 : 0,
-              transition: 'opacity 0.9s ease-in-out',
-            }}
-          >
-            <img src={imgUrl} alt={`VIEHORA TRAVEL Banner ${index + 1}`} />
-          </div>
-        ))}
+    <section className="vh-hero-banner-section">
+      {/* Full-width uncropped official cover banner */}
+      <div style={{ width: '100%', background: '#0b2039' }}>
+        <img
+          src="/assets/img/viehora-banner.jpg"
+          alt="VIEHORA TRAVEL — Chuyên phục vụ các tour du lịch nội địa"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+          }}
+        />
       </div>
-      <div className="vh-hero-shade" />
 
-      <div className="container vh-hero-content">
-        <p className="vh-eyebrow">HÀNH TRÌNH CỦA BẠN · CÂU CHUYỆN CỦA BẠN</p>
-        <h1 className="vh-hero-title">
-          Chạm đến
-          <br />
-          <em>mọi chân trời.</em>
-        </h1>
-        <p className="vh-hero-sub">
-          Khám phá vẻ đẹp Việt Nam và thế giới qua những hành trình giàu trải nghiệm, kết nối văn hóa và thiên nhiên — An toàn · Gần gũi · Bền vững.
-        </p>
-
-        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '28px' }}>
-          <Link href="/category/du-lich" className="vh-btn-gold">
-            Khám phá tour &rarr;
-          </Link>
-          <Link
-            href="/gioi-thieu"
-            style={{
-              minHeight: '44px',
-              padding: '0 22px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              border: '1px solid rgba(255,255,255,0.6)',
-              borderRadius: '6px',
-              color: '#ffffff',
-              fontSize: '12px',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-            }}
-          >
-            Câu chuyện VIEHORA
-          </Link>
-        </div>
-
-        {/* Search & Filter Card */}
-        <form role="search" className="vh-search-card" onSubmit={handleSearch}>
+      {/* Search & Filter Bar placed cleanly below the banner */}
+      <div className="container" style={{ marginTop: '-28px', position: 'relative', zIndex: 20, marginBottom: '28px' }}>
+        <form role="search" className="vh-search-card" style={{ margin: '0 auto' }} onSubmit={handleSearch}>
           <div className="vh-search-row">
             <input
               type="search"
               className="vh-search-input"
-              aria-label="Nhập điểm đến hoặc từ khóa tìm kiếm"
-              placeholder="Bạn muốn đi đâu? (Phú Quốc, Nhật Bản, Hàn Quốc, Hành hương...)"
+              aria-label="Nhập điểm đến Việt Nam hoặc từ khóa tìm kiếm"
+              placeholder="Bạn muốn đi đâu ở Việt Nam? (Hà Giang, Đà Nẵng, Phú Quốc, Đà Lạt...)"
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
@@ -118,11 +70,9 @@ export default function HeroSection() {
               <div>
                 <label className="vh-filter-label">Dòng tour</label>
                 <select className="vh-filter-select" value={cat} onChange={(e) => setCat(e.target.value)}>
-                  <option value="">Tất cả dòng tour</option>
+                  <option value="">Tất cả Tour Trong Nước</option>
                   <option value="trong-nuoc">Tour Trong Nước</option>
-                  <option value="nuoc-ngoai">Tour Nước Ngoài</option>
-                  <option value="hanh-huong">Tour Hành Hương</option>
-                  <option value="gia-re">Tour Giá Sốc</option>
+                  <option value="gia-re">Tour Giá Tốt</option>
                 </select>
               </div>
               <div>
@@ -132,6 +82,7 @@ export default function HeroSection() {
                   <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
                   <option value="Hà Nội">Hà Nội</option>
                   <option value="Đà Nẵng">Đà Nẵng</option>
+                  <option value="Cần Thơ">Cần Thơ</option>
                 </select>
               </div>
               <div>
@@ -149,8 +100,7 @@ export default function HeroSection() {
                   <option value="">Tất cả mức giá</option>
                   <option value="under_5m">Dưới 5 triệu</option>
                   <option value="5m_15m">5 triệu - 15 triệu</option>
-                  <option value="15m_30m">15 triệu - 30 triệu</option>
-                  <option value="over_30m">Trên 30 triệu</option>
+                  <option value="15m_30m">Trên 15 triệu</option>
                 </select>
               </div>
               <div>

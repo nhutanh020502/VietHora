@@ -21,7 +21,7 @@ export default function TourSection({
   categoryLink,
 }: TourSectionProps) {
   const { tours, hydrated } = useTours();
-  const filtered = tours.filter((t) => t.category === categorySlug);
+  const filtered = tours.filter((t) => t.category === categorySlug).slice(0, 6);
 
   return (
     <section className="vh-section">

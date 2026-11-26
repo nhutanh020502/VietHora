@@ -13,11 +13,12 @@ import {
 import { addOrUpdateTour, deleteTourById, useTours } from '@/lib/tourStore';
 
 const PRESET_IMAGES = [
-  { label: 'Biển đảo / Phú Quốc', url: '/assets/img/about-hero-bg.png' },
-  { label: 'Trong nước / Miền Trung', url: '/assets/img/flight-domestic.png' },
-  { label: 'Quốc tế / Nhật - Hàn', url: '/assets/img/flight-international.png' },
-  { label: 'Khám phá / Bay', url: '/assets/img/flight-hero-bg.png' },
-  { label: 'Du lịch / Visa', url: '/assets/img/visa-hero-bg.png' },
+  { label: 'Phú Quốc / Biển đảo', url: '/assets/img/phu-quoc.jpg' },
+  { label: 'Đà Nẵng', url: '/assets/img/da-nang.jpg' },
+  { label: 'Hội An', url: '/assets/img/hoi-an.jpg' },
+  { label: 'Hà Giang', url: '/assets/img/ha-giang.jpg' },
+  { label: 'Đà Lạt', url: '/assets/img/da-lat.jpg' },
+  { label: 'Tây Nguyên', url: '/assets/img/tay-nguyen.jpg' },
 ];
 
 function createEmptyItinerary(): TourItineraryDay[] {
@@ -47,8 +48,8 @@ export default function AddTourPage() {
   const [priceChild, setPriceChild] = useState('');
   const [priceInfant, setPriceInfant] = useState('');
 
-  const [image, setImage] = useState('/assets/img/about-hero-bg.png');
-  const [gallery, setGallery] = useState<string[]>(['/assets/img/about-hero-bg.png']);
+  const [image, setImage] = useState('/assets/img/phu-quoc.jpg');
+  const [gallery, setGallery] = useState<string[]>(['/assets/img/phu-quoc.jpg']);
   const [newGalleryUrl, setNewGalleryUrl] = useState('');
 
   const [summary, setSummary] = useState('');
@@ -95,8 +96,8 @@ export default function AddTourPage() {
     setPriceNew('');
     setPriceChild('');
     setPriceInfant('');
-    setImage('/assets/img/about-hero-bg.png');
-    setGallery(['/assets/img/about-hero-bg.png']);
+    setImage('/assets/img/phu-quoc.jpg');
+    setGallery(['/assets/img/phu-quoc.jpg']);
     setSummary('');
     setHighlights(['']);
     setItinerary(createEmptyItinerary());
@@ -156,8 +157,8 @@ export default function AddTourPage() {
       priceNumeric: parsePriceToNumber(priceNew),
       priceChild: priceChild.trim() || undefined,
       priceInfant: priceInfant.trim() || undefined,
-      image: image.trim() || '/assets/img/about-hero-bg.png',
-      gallery: cleanGallery.length > 0 ? cleanGallery : [image.trim() || '/assets/img/about-hero-bg.png'],
+      image: image.trim() || '/assets/img/phu-quoc.jpg',
+      gallery: cleanGallery.length > 0 ? cleanGallery : [image.trim() || '/assets/img/phu-quoc.jpg'],
       summary: summary.trim() || title.trim(),
       highlights: highlights.map((s) => s.trim()).filter(Boolean),
       itinerary: itinerary.filter((d) => d.title.trim() || d.description.trim()),
@@ -357,9 +358,7 @@ export default function AddTourPage() {
                 className="vh-filter-select"
               >
                 <option value="trong-nuoc">Tour Trong Nước</option>
-                <option value="nuoc-ngoai">Tour Nước Ngoài</option>
-                <option value="hanh-huong">Tour Hành Hương</option>
-                <option value="gia-re">Tour Giá Sốc</option>
+                <option value="gia-re">Tour Giá Tốt</option>
               </select>
             </div>
             <div>

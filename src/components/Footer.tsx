@@ -19,7 +19,6 @@ export default function Footer() {
             gap: '36px',
           }}
         >
-          {/* Brand Column */}
           <div>
             <Link
               href="/"
@@ -33,7 +32,7 @@ export default function Footer() {
               />
             </Link>
             <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#9fb0c4', margin: '0 0 18px' }}>
-              <strong>CÔNG TY TNHH DU LỊCH VÀ LỮ HÀNH CHÂN TRỜI VIÊN MÃN</strong> — VIEHORA TRAVEL (Beyond Every Horizon). Mang đến những hành trình an toàn, gần gũi và bền vững.
+              <strong>{BRAND_INFO.legalName}</strong> — VIEHORA TRAVEL (Beyond Every Horizon). Chuyên phục vụ các tour du lịch nội địa: Khám phá, trải nghiệm &amp; văn hóa.
             </p>
             <div style={{ display: 'flex', gap: '14px', fontSize: '11px', letterSpacing: '0.14em', color: 'var(--gold)', fontWeight: 700 }}>
               <a href={`mailto:${BRAND_INFO.email}`}>EMAIL ↗</a>
@@ -44,7 +43,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact Column */}
           <div>
             <div style={{ fontSize: '12px', letterSpacing: '0.18em', color: 'var(--gold)', fontWeight: 700, marginBottom: '16px' }}>
               THÔNG TIN LIÊN HỆ
@@ -69,31 +67,26 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Services */}
           <div>
             <div style={{ fontSize: '12px', letterSpacing: '0.18em', color: 'var(--gold)', fontWeight: 700, marginBottom: '16px' }}>
-              DỊCH VỤ NỔI BẬT
+              DỊCH VỤ NỘI ĐỊA
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px' }}>
               <li>
                 <Link href="/category/trong-nuoc">Tour Du Lịch Trong Nước</Link>
               </li>
               <li>
-                <Link href="/category/nuoc-ngoai">Tour Du Lịch Quốc Tế</Link>
+                <Link href="/category/gia-re">Tour Giá Tốt Cuối Tuần</Link>
               </li>
               <li>
-                <Link href="/category/hanh-huong">Tour Hành Hương Trọn Gói</Link>
+                <Link href="/ve-may-bay">Vé Máy Bay Nội Địa</Link>
               </li>
               <li>
-                <Link href="/visa">Dịch Vụ Visa Trọn Gói</Link>
-              </li>
-              <li>
-                <Link href="/ve-may-bay">Đại Lý Vé Máy Bay</Link>
+                <Link href="/tim-kiem">Tìm Kiếm Tour Nhanh</Link>
               </li>
             </ul>
           </div>
 
-          {/* Explore */}
           <div>
             <div style={{ fontSize: '12px', letterSpacing: '0.18em', color: 'var(--gold)', fontWeight: 700, marginBottom: '16px' }}>
               KHÁM PHÁ THÊM
@@ -103,10 +96,7 @@ export default function Footer() {
                 <Link href="/gioi-thieu">Câu chuyện VIEHORA</Link>
               </li>
               <li>
-                <Link href="/tin-tuc">Cẩm Nang &amp; Tin Tức</Link>
-              </li>
-              <li>
-                <Link href="/tim-kiem">Tìm Kiếm Tour Nhanh</Link>
+                <Link href="/tin-tuc">Cẩm Nang Du Lịch Việt Nam</Link>
               </li>
             </ul>
           </div>

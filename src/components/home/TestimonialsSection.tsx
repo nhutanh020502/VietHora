@@ -39,17 +39,44 @@ export default function TestimonialsSection() {
 
       <div className="vh-horizontal-scroll" ref={sliderRef}>
         {TESTIMONIALS.map((item, idx) => (
-          <div key={idx} className="vh-testimonial-card">
-            <div style={{ color: 'var(--gold)', fontSize: '15px', marginBottom: '12px', letterSpacing: '2px' }}>★★★★★</div>
-            <p style={{ fontSize: '14px', color: 'var(--ink)', lineHeight: 1.65, margin: '0 0 18px' }}>{item.text}</p>
+          <div
+            key={idx}
+            className="vh-testimonial-card"
+            style={{
+              position: 'relative',
+              borderTop: '3px solid var(--gold)',
+              boxShadow: '0 12px 30px rgba(16, 43, 78, 0.08)',
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: '12px',
+                right: '18px',
+                fontFamily: 'var(--font-display)',
+                fontSize: '48px',
+                lineHeight: 1,
+                color: 'rgba(200, 164, 93, 0.25)',
+              }}
+            >
+              ”
+            </span>
+            <div style={{ color: '#d97706', fontSize: '14px', marginBottom: '12px', letterSpacing: '2px' }}>★★★★★</div>
+            <p style={{ fontSize: '14px', color: 'var(--ink)', lineHeight: 1.65, margin: '0 0 18px', flex: 1 }}>
+              {item.text}
+            </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', borderTop: '1px solid #f0ece3', paddingTop: '14px' }}>
               <div
                 style={{
-                  width: '40px',
-                  height: '40px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: '50%',
-                  background: 'var(--navy)',
+                  background: 'linear-gradient(135deg, #0b2039 0%, #173b63 100%)',
                   color: 'var(--gold)',
+                  border: '1.5px solid var(--gold)',
                   display: 'grid',
                   placeItems: 'center',
                   fontWeight: 700,

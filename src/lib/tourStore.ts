@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { TOURS, Tour } from '@/data/tours';
 
-const STORAGE_KEY = 'viehora_custom_tours_v1';
+const STORAGE_KEY = 'viehora_custom_tours_v3';
 const UPDATE_EVENT = 'viehora-tours-updated';
 
 export function loadToursFromStorage(): Tour[] {

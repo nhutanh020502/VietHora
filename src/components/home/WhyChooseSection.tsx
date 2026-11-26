@@ -1,41 +1,142 @@
 export default function WhyChooseSection() {
   const values = [
     {
-      icon: '✧',
-      title: 'An toàn',
-      desc: 'Chuẩn bị chu đáo, thông tin minh bạch rõ ràng và luôn đặt sự an tâm của du khách lên hàng đầu trên mọi cung đường.',
+      num: '01',
+      title: 'An toàn tuyệt đối',
+      tag: 'Tiêu chuẩn vận hành',
+      desc: 'Chuẩn bị chu đáo, xe du lịch đời mới, đối tác lưu trú chọn lọc và thông tin minh bạch rõ ràng trên mọi cung đường.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <polyline points="9 12 11 14 15 10" />
+        </svg>
+      ),
     },
     {
-      icon: '⌂',
-      title: 'Gần gũi',
-      desc: 'Kết nối chân thành với cộng đồng địa phương, văn hóa bản địa và những câu chuyện đáng nhớ tại mỗi vùng đất.',
+      num: '02',
+      title: 'Gần gũi bản địa',
+      tag: 'Trải nghiệm chân thực',
+      desc: 'Kết nối chân thành với cộng đồng địa phương, thưởng thức ẩm thực đặc sản và lắng nghe những câu chuyện văn hóa.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+      ),
     },
     {
-      icon: '❋',
-      title: 'Bền vững',
-      desc: 'Tôn trọng thiên nhiên, gìn giữ bản sắc văn hóa và khuyến khích du lịch có trách nhiệm với thế hệ tương lai.',
+      num: '03',
+      title: 'Du lịch bền vững',
+      tag: 'Trách nhiệm & Tận tâm',
+      desc: 'Tôn trọng cảnh quan thiên nhiên, gìn giữ giá trị di sản Việt Nam và đồng hành có trách nhiệm cùng thế hệ tương lai.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 22c4-4 6-7.5 6-11a6 6 0 1 0-12 0c0 3.5 2 7 6 11z" />
+          <circle cx="12" cy="11" r="2.5" />
+        </svg>
+      ),
     },
   ];
 
   return (
-    <section className="vh-values-band">
+    <section
+      style={{
+        background:
+          'radial-gradient(circle at 85% 15%, rgba(200, 164, 93, 0.18) 0%, transparent 45%), linear-gradient(135deg, #0b2039 0%, #102b4e 55%, #173b63 100%)',
+        color: '#ffffff',
+        padding: '72px 0',
+        margin: '44px 0',
+      }}
+    >
       <div className="container">
-        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto' }}>
-          <p className="vh-eyebrow">ĐIỀU LÀM NÊN KHÁC BIỆT</p>
-          <h2 className="vh-section-title" style={{ color: '#ffffff' }}>
+        <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 42px' }}>
+          <p className="vh-eyebrow" style={{ marginBottom: '8px' }}>
+            ĐIỀU LÀM NÊN KHÁC BIỆT
+          </p>
+          <h2 className="vh-section-title" style={{ color: '#ffffff', marginBottom: '12px' }}>
             Giá trị trên mỗi <em>hành trình</em>
           </h2>
-          <p style={{ color: '#cbd5e1', fontSize: '14px', marginTop: '10px' }}>
+          <p style={{ color: '#cbd5e1', fontSize: '15px', margin: 0 }}>
             Từng trải nghiệm tại VIEHORA TRAVEL đều được xây dựng từ sự tận tâm, uy tín và trách nhiệm.
           </p>
         </div>
 
-        <div className="vh-values-grid">
+        <div className="vh-values-grid" style={{ marginTop: 0 }}>
           {values.map((v) => (
-            <article key={v.title} className="vh-value-card">
-              <div className="vh-value-icon">{v.icon}</div>
-              <h3>{v.title}</h3>
-              <p>{v.desc}</p>
+            <article
+              key={v.title}
+              style={{
+                background: 'rgba(255, 255, 255, 0.06)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.14)',
+                borderTop: '3px solid var(--gold)',
+                borderRadius: '16px',
+                padding: '28px 26px',
+                position: 'relative',
+                boxShadow: '0 16px 36px rgba(5, 16, 30, 0.28)',
+              }}
+            >
+              <span
+                style={{
+                  position: 'absolute',
+                  top: '20px',
+                  right: '24px',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '36px',
+                  fontWeight: 700,
+                  color: 'rgba(200, 164, 93, 0.22)',
+                  lineHeight: 1,
+                }}
+              >
+                {v.num}
+              </span>
+
+              <div
+                style={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: '12px',
+                  background: 'rgba(200, 164, 93, 0.16)',
+                  border: '1px solid rgba(200, 164, 93, 0.45)',
+                  color: 'var(--gold)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  marginBottom: '18px',
+                }}
+              >
+                {v.icon}
+              </div>
+
+              <div
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  letterSpacing: '0.16em',
+                  textTransform: 'uppercase',
+                  color: 'var(--gold)',
+                  marginBottom: '6px',
+                }}
+              >
+                {v.tag}
+              </div>
+
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '22px',
+                  fontWeight: 600,
+                  color: '#ffffff',
+                  margin: '0 0 10px',
+                }}
+              >
+                {v.title}
+              </h3>
+
+              <p style={{ margin: 0, fontSize: '14px', color: '#d5dfeb', lineHeight: 1.7 }}>
+                {v.desc}
+              </p>
             </article>
           ))}
         </div>

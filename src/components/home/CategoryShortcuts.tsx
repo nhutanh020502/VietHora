@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 export default function CategoryShortcuts() {
   const items = [
-    { href: '/category/gia-re', title: 'Tour Giá Sốc', desc: 'Ưu đãi đặt sớm đến 30%', symbol: '✦' },
-    { href: '/category/trong-nuoc', title: 'Khám Phá Việt Nam', desc: 'Phú Quốc, Đà Nẵng, Sapa', symbol: '⌂' },
-    { href: '/category/nuoc-ngoai', title: 'Tour Quốc Tế', desc: 'Nhật Bản, Hàn Quốc, Trung Quốc', symbol: '✧' },
-    { href: '/category/hanh-huong', title: 'Hành Hương Tâm Linh', desc: 'Ấn Độ, Nepal, Thái Lan', symbol: '❋' },
-    { href: '/ve-may-bay', title: 'Vé Máy Bay & Visa', desc: 'Xuất vé & hồ sơ 24/7', symbol: '✈' },
+    { href: '/tim-kiem?q=Phú+Quốc', title: 'Biển Đảo Việt Nam', desc: 'Phú Quốc, Nha Trang, Côn Đảo', symbol: '☀' },
+    { href: '/tim-kiem?q=Đà+Nẵng', title: 'Di Sản Miền Trung', desc: 'Đà Nẵng, Hội An, Cố Đô Huế', symbol: '⌂' },
+    { href: '/tim-kiem?q=Hà+Giang', title: 'Đông – Tây Bắc', desc: 'Hà Giang, Sapa, Hạ Long', symbol: '⛰' },
+    { href: '/category/gia-re', title: 'Tour Giá Tốt', desc: 'Ưu đãi cuối tuần đến 30%', symbol: '✦' },
+    { href: '/ve-may-bay', title: 'Vé Máy Bay Nội Địa', desc: 'Xuất vé nhanh 24/7', symbol: '✈' },
   ];
 
   return (

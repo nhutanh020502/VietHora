@@ -9,10 +9,10 @@ export default function FavoriteDestinations() {
           ĐIỂM ĐẾN ĐANG CHỜ BẠN
         </p>
         <h2 className="vh-section-title">
-          Điểm đến <em>nổi bật</em>
+          Việt Nam <em>tươi đẹp</em>
         </h2>
         <p style={{ color: 'var(--muted)', fontSize: '14px', marginTop: '8px' }}>
-          Khám phá những di sản văn hóa &amp; cảnh quan kỳ vĩ tại Việt Nam và khắp thế giới
+          Những vùng đất giàu bản sắc, thiên nhiên kỳ vĩ và trải nghiệm đáng nhớ trên dải đất hình chữ S
         </p>
       </div>
 
@@ -27,6 +27,7 @@ export default function FavoriteDestinations() {
               <img src={dest.img} alt={dest.name} width={170} height={320} loading="lazy" />
             </div>
             <div className="fav-dest-name-below">{dest.name}</div>
+            <div style={{ fontSize: '12px', color: 'var(--muted)', marginTop: '2px' }}>{dest.subtitle}</div>
           </Link>
         ))}
       </div>
