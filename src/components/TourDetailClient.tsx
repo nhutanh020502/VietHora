@@ -2,16 +2,19 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Tour } from '@/data/tours';
+import { Tour, getLocalizedTour } from '@/data/tours';
 import { BRAND_INFO } from '@/data/content';
 import TourCard from '@/components/TourCard';
+import { useLanguage } from '@/lib/i18n';
 
 interface TourDetailClientProps {
   tour: Tour;
   relatedTours: Tour[];
 }
 
-export default function TourDetailClient({ tour, relatedTours }: TourDetailClientProps) {
+export default function TourDetailClient({ tour: rawTour, relatedTours }: TourDetailClientProps) {
+  const { lang, t } = useLanguage();
+  const tour = getLocalizedTour(rawTour, lang);
   const images = tour.gallery.length > 0 ? tour.gallery : [tour.image];
   const [activeImage, setActiveImage] = useState(images[0]);
   const [activeTab, setActiveTab] = useState<
@@ -150,42 +153,42 @@ export default function TourDetailClient({ tour, relatedTours }: TourDetailClien
                 className={`tour-tab-btn ${activeTab === 'details' ? 'active' : ''}`}
                 onClick={() => setActiveTab('details')}
               >
-                Chương Trình Tour
+                {t('Chương Trình Tour', 'Itinerary')}
               </button>
               <button
                 type="button"
                 className={`tour-tab-btn ${activeTab === 'inclusions' ? 'active' : ''}`}
                 onClick={() => setActiveTab('inclusions')}
               >
-                Giá Bao Gồm
+                {t('Giá Bao Gồm', 'Included')}
               </button>
               <button
                 type="button"
                 className={`tour-tab-btn ${activeTab === 'exclusions' ? 'active' : ''}`}
                 onClick={() => setActiveTab('exclusions')}
               >
-                Không Bao Gồm
+                {t('Không Bao Gồm', 'Excluded')}
               </button>
               <button
                 type="button"
                 className={`tour-tab-btn ${activeTab === 'child' ? 'active' : ''}`}
                 onClick={() => setActiveTab('child')}
               >
-                Giá Trẻ Em
+                {t('Giá Trẻ Em', 'Child Policy')}
               </button>
               <button
                 type="button"
                 className={`tour-tab-btn ${activeTab === 'payment' ? 'active' : ''}`}
                 onClick={() => setActiveTab('payment')}
               >
-                Thanh Toán &amp; Hủy
+                {t('Thanh Toán & Hủy', 'Payment & Cancel')}
               </button>
               <button
                 type="button"
                 className={`tour-tab-btn ${activeTab === 'notes' ? 'active' : ''}`}
                 onClick={() => setActiveTab('notes')}
               >
-                Lưu Ý
+                {t('Lưu Ý', 'Notes')}
               </button>
             </div>
 
@@ -441,7 +444,7 @@ export default function TourDetailClient({ tour, relatedTours }: TourDetailClien
                 className="vh-btn-gold"
                 style={{ width: '100%', padding: '14px 20px', fontSize: '14px' }}
               >
-                Đặt Tour Ngay ↗
+                {t('Đặt Tour Ngay ↗', 'Book This Tour ↗')}
               </button>
               <a
                 href={BRAND_INFO.zaloUrl}
@@ -450,7 +453,7 @@ export default function TourDetailClient({ tour, relatedTours }: TourDetailClien
                 className="vh-btn-navy-outline"
                 style={{ width: '100%', padding: '12px 20px' }}
               >
-                Tư Vấn Qua Zalo ({BRAND_INFO.hotline})
+                {t('Tư Vấn Qua Zalo', 'Chat on Zalo')} ({BRAND_INFO.hotline})
               </a>
             </div>
           </div>

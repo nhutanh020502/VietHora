@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/lib/i18n';
 
 export default function HeroSection() {
   const router = useRouter();
+  const { t } = useLanguage();
   const [showAdvanced, setShowAdvanced] = useState(false);
 
   const [q, setQ] = useState('');
@@ -48,8 +50,11 @@ export default function HeroSection() {
             <input
               type="search"
               className="vh-search-input"
-              aria-label="Nhập điểm đến Việt Nam hoặc từ khóa tìm kiếm"
-              placeholder="Bạn muốn đi đâu ở Việt Nam? (Hà Giang, Đà Nẵng, Phú Quốc, Đà Lạt...)"
+              aria-label={t('Nhập điểm đến Việt Nam hoặc từ khóa tìm kiếm', 'Search Vietnam destinations or tour keywords')}
+              placeholder={t(
+                'Bạn muốn đi đâu ở Việt Nam? (Hà Giang, Đà Nẵng, Phú Quốc, Đà Lạt...)',
+                'Where in Vietnam would you like to go? (Ha Giang, Da Nang, Phu Quoc, Da Lat...)'
+              )}
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
@@ -58,10 +63,10 @@ export default function HeroSection() {
               className="vh-btn-navy-outline"
               onClick={() => setShowAdvanced((prev) => !prev)}
             >
-              Lọc chi tiết {showAdvanced ? '▴' : '▾'}
+              {t('Lọc chi tiết', 'Filters')} {showAdvanced ? '▴' : '▾'}
             </button>
             <button type="submit" className="vh-btn-gold">
-              Tìm Kiếm Tour
+              {t('Tìm Kiếm Tour', 'Search Tours')}
             </button>
           </div>
 

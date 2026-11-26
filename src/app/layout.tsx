@@ -4,6 +4,8 @@ import { DM_Sans, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import FloatingContact from '@/components/FloatingContact';
+import { LanguageProvider } from '@/lib/i18n';
 
 const dmSans = DM_Sans({
   weight: ['400', '500', '700'],
@@ -38,13 +40,16 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${dmSans.variable} ${playfair.variable}`}>
       <body>
-        <Suspense fallback={null}>
-          <Header />
-        </Suspense>
-        <div id="page" className="site-main-content">
-          {children}
-        </div>
-        <Footer />
+        <LanguageProvider>
+          <Suspense fallback={null}>
+            <Header />
+          </Suspense>
+          <div id="page" className="site-main-content">
+            {children}
+          </div>
+          <Footer />
+          <FloatingContact />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import { BRAND_INFO } from '@/data/content';
+import { useLanguage } from '@/lib/i18n';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer
       id="colophon"
@@ -22,7 +27,7 @@ export default function Footer() {
           <div>
             <Link
               href="/"
-              aria-label="VIEHORA TRAVEL Trang chủ"
+              aria-label="VIEHORA TRAVEL"
               style={{ display: 'inline-block', marginBottom: '16px', background: '#ffffff', padding: '8px 14px', borderRadius: '10px' }}
             >
               <img
@@ -32,7 +37,11 @@ export default function Footer() {
               />
             </Link>
             <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#9fb0c4', margin: '0 0 18px' }}>
-              <strong>{BRAND_INFO.legalName}</strong> — VIEHORA TRAVEL (Beyond Every Horizon). Chuyên phục vụ các tour du lịch nội địa: Khám phá, trải nghiệm &amp; văn hóa.
+              <strong>{BRAND_INFO.legalName}</strong> — VIEHORA TRAVEL (Beyond Every Horizon).{' '}
+              {t(
+                'Chuyên phục vụ các tour du lịch nội địa: Khám phá, trải nghiệm & văn hóa.',
+                'Specializing in Vietnam domestic tours: Discovery, authentic experiences & local culture.'
+              )}
             </p>
             <div style={{ display: 'flex', gap: '14px', fontSize: '11px', letterSpacing: '0.14em', color: 'var(--gold)', fontWeight: 700 }}>
               <a href={`mailto:${BRAND_INFO.email}`}>EMAIL ↗</a>
@@ -45,7 +54,7 @@ export default function Footer() {
 
           <div>
             <div style={{ fontSize: '12px', letterSpacing: '0.18em', color: 'var(--gold)', fontWeight: 700, marginBottom: '16px' }}>
-              THÔNG TIN LIÊN HỆ
+              {t('THÔNG TIN LIÊN HỆ', 'CONTACT INFO')}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px' }}>
               <div>
@@ -69,34 +78,34 @@ export default function Footer() {
 
           <div>
             <div style={{ fontSize: '12px', letterSpacing: '0.18em', color: 'var(--gold)', fontWeight: 700, marginBottom: '16px' }}>
-              DỊCH VỤ NỘI ĐỊA
+              {t('DỊCH VỤ NỘI ĐỊA', 'DOMESTIC SERVICES')}
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px' }}>
               <li>
-                <Link href="/category/trong-nuoc">Tour Du Lịch Trong Nước</Link>
+                <Link href="/category/trong-nuoc">{t('Tour Du Lịch Trong Nước', 'Vietnam Domestic Tours')}</Link>
               </li>
               <li>
-                <Link href="/category/gia-re">Tour Giá Tốt Cuối Tuần</Link>
+                <Link href="/category/gia-re">{t('Tour Giá Tốt Cuối Tuần', 'Weekend Best Deals')}</Link>
               </li>
               <li>
-                <Link href="/ve-may-bay">Vé Máy Bay Nội Địa</Link>
+                <Link href="/ve-may-bay">{t('Vé Máy Bay Nội Địa', 'Domestic Flight Tickets')}</Link>
               </li>
               <li>
-                <Link href="/tim-kiem">Tìm Kiếm Tour Nhanh</Link>
+                <Link href="/tim-kiem">{t('Tìm Kiếm Tour Nhanh', 'Quick Tour Search')}</Link>
               </li>
             </ul>
           </div>
 
           <div>
             <div style={{ fontSize: '12px', letterSpacing: '0.18em', color: 'var(--gold)', fontWeight: 700, marginBottom: '16px' }}>
-              KHÁM PHÁ THÊM
+              {t('KHÁM PHÁ THÊM', 'EXPLORE MORE')}
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '14px' }}>
               <li>
-                <Link href="/gioi-thieu">Câu chuyện VIEHORA</Link>
+                <Link href="/gioi-thieu">{t('Câu chuyện VIEHORA', 'About VIEHORA TRAVEL')}</Link>
               </li>
               <li>
-                <Link href="/tin-tuc">Cẩm Nang Du Lịch Việt Nam</Link>
+                <Link href="/tin-tuc">{t('Cẩm Nang Du Lịch Việt Nam', 'Vietnam Travel Guide')}</Link>
               </li>
             </ul>
           </div>
@@ -118,7 +127,7 @@ export default function Footer() {
           }}
         >
           <span>© 2026 VIEHORA TRAVEL. ALL RIGHTS RESERVED.</span>
-          <span>Beyond Every Horizon – Chạm đến mọi chân trời.</span>
+          <span>{t('Beyond Every Horizon – Chạm đến mọi chân trời.', 'Beyond Every Horizon – Every journey, a story.')}</span>
         </div>
       </div>
     </footer>

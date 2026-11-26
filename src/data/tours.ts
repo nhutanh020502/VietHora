@@ -10,10 +10,12 @@ export interface Tour {
   id: number;
   slug: string;
   title: string;
+  titleEn?: string;
   tourCode: string;
   category: TourCategorySlug;
   categoryName: string;
   badgeText?: string;
+  badgeTextEn?: string;
   startPoint: string;
   destination: string;
   duration: string;
@@ -29,8 +31,11 @@ export interface Tour {
   image: string;
   gallery: string[];
   summary: string;
+  summaryEn?: string;
   highlights: string[];
+  highlightsEn?: string[];
   itinerary: TourItineraryDay[];
+  itineraryEn?: TourItineraryDay[];
   inclusions: string[];
   exclusions: string[];
   childPolicy: string[];
@@ -646,4 +651,157 @@ export function slugifyVietnamese(input: string): string {
 export function parsePriceToNumber(priceStr: string): number {
   const digits = priceStr.replace(/[^0-9]/g, '');
   return digits ? Number(digits) : 0;
+}
+
+const EN_TOUR_MAP: Record<string, { titleEn: string; summaryEn: string; badgeEn?: string }> = {
+  'VH-001': {
+    titleEn: 'Phu Quoc 3D2N: Grand World – Hon Thom Cable Car – Snorkeling',
+    summaryEn: 'Discover Pearl Island Phu Quoc with the world’s longest sea-crossing cable car, Grand World, and a 4-island speedboat trip.',
+    badgeEn: 'Best Seller',
+  },
+  'VH-002': {
+    titleEn: 'Da Nang – Hoi An – Ba Na Hills – Golden Bridge 4D3N',
+    summaryEn: 'Check in at the iconic Golden Bridge on Ba Na Hills, stroll lantern-lit Hoi An Ancient Town, and relax at My Khe Beach.',
+    badgeEn: 'Special Offer',
+  },
+  'VH-003': {
+    titleEn: 'Ha Giang – Dong Van – Nho Que River – Ma Pi Leng Pass 3D2N',
+    summaryEn: 'Conquer majestic Ma Pi Leng Pass, cruise emerald Nho Que River through Tu San Canyon, and visit Lung Cu Flagpole.',
+    badgeEn: 'Adventure',
+  },
+  'VH-004': {
+    titleEn: 'Sapa – Fansipan Peak – Cat Cat Village – Moana 3D2N',
+    summaryEn: 'Hunt clouds atop Fansipan Peak (3,143m), wander peaceful Cat Cat Village, and enjoy Sapa salmon hotpot.',
+    badgeEn: 'Value Deal',
+  },
+  'VH-005': {
+    titleEn: 'Ha Long Bay – 5-Star Cruise – Sung Sot Cave – Titop Island 2D1N',
+    summaryEn: 'Overnight aboard a 5-star cruise in UNESCO-listed Ha Long Bay with kayaking and sunset tea party.',
+    badgeEn: 'Luxury',
+  },
+  'VH-006': {
+    titleEn: 'Ninh Binh – Trang An – Mua Cave – Bai Dinh Pagoda 2D1N',
+    summaryEn: 'Row through Trang An heritage caves, climb Ngoa Long Peak at Mua Cave, and visit Bai Dinh Pagoda.',
+  },
+  'VH-007': {
+    titleEn: 'Da Lat 3D2N: Cau Dat Cloud Hunting – Puppy Farm – Valley of Love',
+    summaryEn: 'Enjoy Da Lat’s crisp pine-scented air, sunrise cloud hunting at Cau Dat Tea Hill, and fresh highland cuisine.',
+    badgeEn: 'Hot',
+  },
+  'VH-008': {
+    titleEn: 'Nha Trang 3D3N: Robinson Island – VinWonders – Mineral Mud Bath',
+    summaryEn: 'Have fun at VinWonders, enjoy a seafood feast on Robinson Island, and unwind with warm mineral mud baths.',
+    badgeEn: 'Best Deal',
+  },
+  'VH-009': {
+    titleEn: 'Quy Nhon – Phu Yen 4D3N: Ky Co – Eo Gio – Ganh Da Dia',
+    summaryEn: 'Explore peaceful Binh Dinh & Phu Yen with crystal-clear Ky Co Beach, dramatic Eo Gio cliffs, and Ganh Da Dia.',
+    badgeEn: 'Coastal',
+  },
+  'VH-010': {
+    titleEn: 'Hue – Quang Binh 4D3N: Imperial Citadel – Phong Nha & Paradise Caves',
+    summaryEn: 'Journey through Central Vietnam heritage: Hue Imperial City, Perfume River folk songs, and Phong Nha – Ke Bang caves.',
+  },
+  'VH-011': {
+    titleEn: 'Phan Thiet – Mui Ne 2D1N: Red Sand Dunes – Bau Trang – Bikini Beach',
+    summaryEn: 'Quick 2-hour expressway getaway: Jeep ride over White Sand Dunes, coastal resorts, and fresh seafood.',
+    badgeEn: 'Weekend',
+  },
+  'VH-012': {
+    titleEn: 'Con Dao Island 3D2N: Hang Duong Memorial – Dam Trau Beach',
+    summaryEn: 'A meaningful heritage & beach retreat to Con Dao with Hang Duong Cemetery and pristine Dam Trau Beach.',
+    badgeEn: 'Special',
+  },
+  'VH-013': {
+    titleEn: 'Mekong Delta 2D1N: My Tho – Ben Tre – Cai Rang Floating Market',
+    summaryEn: 'Experience Mekong river life: sampan rides under coconut palms in Ben Tre and Cai Rang Floating Market at dawn.',
+    badgeEn: 'Best Deal',
+  },
+  'VH-014': {
+    titleEn: 'Central Highlands 3D2N: Buon Ma Thuot – Ta Dung Lake – Dray Nur Waterfall',
+    summaryEn: 'Admire Ta Dung Lake, visit the World Coffee Museum, and feel the power of Dray Nur Waterfall.',
+    badgeEn: 'Highlands',
+  },
+  'VH-015': {
+    titleEn: 'Mang Den – Pleiku 3D2N: T’Nung Lake – Pine Forest – Pa Sy Waterfall',
+    summaryEn: 'Retreat to serene Mang Den pine forests, enjoy bamboo-tube rice with grilled chicken, and visit Pleiku.',
+  },
+  'VH-016': {
+    titleEn: 'Moc Chau – Ta Xua 2D1N: Dinosaur Spine Cloud Hunting – Tea Hills',
+    summaryEn: 'Weekend cloud-hunting trip to Ta Xua Dinosaur Spine and Moc Chau’s heart-shaped tea plantations.',
+    badgeEn: 'Cloud Hunt',
+  },
+  'VH-017': {
+    titleEn: 'Cat Ba Island – Lan Ha Bay 2D1N: Kayaking – Cai Beo Fishing Village',
+    summaryEn: 'Cruise tranquil Lan Ha Bay, kayak through Bright & Dark Caves, and cycle around Viet Hai ancient village.',
+  },
+  'VH-018': {
+    titleEn: 'Ly Son Island 3D2N: To Vo Gate – An Binh Islet – Thoi Loi Peak',
+    summaryEn: 'Discover volcanic Ly Son Island with turquoise water at Be Island, Hang Cau, and sunset at To Vo Gate.',
+  },
+  'VH-019': {
+    titleEn: 'Ho Tram – Vung Tau 2D1N: Binh Chau Hot Springs – 5-Star Resort',
+    summaryEn: 'Relaxing weekend escape in Ho Tram with natural mineral hot springs at Binh Chau and Hamptons Pier.',
+    badgeEn: 'Resort',
+  },
+  'VH-020': {
+    titleEn: 'Northern Vietnam Grand Tour 5D4N: Hanoi – Ha Long – Trang An – Sapa',
+    summaryEn: 'Complete Northern Vietnam highlights: Hanoi Old Quarter, Ha Long Bay cruise, Trang An, and Fansipan Peak.',
+    badgeEn: 'All-in-One',
+  },
+};
+
+export function getLocalizedTour(tour: Tour, lang: 'vi' | 'en'): Tour {
+  if (lang === 'vi') return tour;
+
+  const preset = EN_TOUR_MAP[tour.tourCode];
+  const translatePlace = (p: string) =>
+    p
+      .replace('TP. Hồ Chí Minh', 'Ho Chi Minh City')
+      .replace('Hà Nội', 'Hanoi')
+      .replace('Đà Nẵng', 'Da Nang')
+      .replace('Cần Thơ', 'Can Tho');
+
+  const translateDuration = (d: string) => d.replace(/N/g, 'D').replace(/Đ/g, 'N');
+  const translateStartDate = (s: string) =>
+    s
+      .replace('Hàng tuần', 'Weekly')
+      .replace('Hàng ngày', 'Daily')
+      .replace('Tháng ', 'Month ');
+
+  return {
+    ...tour,
+    title: tour.titleEn || preset?.titleEn || tour.title,
+    categoryName: tour.category === 'gia-re' ? 'Best Deals' : 'Domestic Tours',
+    badgeText: tour.badgeTextEn || preset?.badgeEn || tour.badgeText,
+    startPoint: translatePlace(tour.startPoint),
+    duration: translateDuration(tour.duration),
+    startDate: translateStartDate(tour.startDate),
+    summary: tour.summaryEn || preset?.summaryEn || tour.summary,
+    inclusions: [
+      'Round-trip transport (flight / modern tourist coach) per itinerary',
+      'Standard 3–5 star hotel accommodation (2 guests/room)',
+      'Meals & local specialties as scheduled',
+      'Sightseeing entrance tickets & travel insurance',
+      'Professional English/Vietnamese-speaking tour guide',
+    ],
+    exclusions: [
+      'Personal expenses, laundry, beverages outside menu',
+      'Single room supplement & VAT (if applicable)',
+    ],
+    childPolicy: [
+      'Under 2 years old: share bed with parents (airline fee applies)',
+      '2 – 11 years old: 80% of adult tour price (own seat & meal)',
+      '11 years and older: full adult price',
+    ],
+    paymentPolicy: [
+      '50% deposit upon booking confirmation',
+      'Remaining balance due at least 7 days before departure',
+      'Flexible date change available with 10 days prior notice',
+    ],
+    notes: [
+      'Please bring valid ID/Passport for hotel check-in and domestic flights.',
+      'Itinerary order may adjust for weather conditions while keeping all attractions.',
+    ],
+  };
 }

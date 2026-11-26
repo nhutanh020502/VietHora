@@ -31,6 +31,7 @@ export default function AddTourPage() {
   // Form state
   const [editingId, setEditingId] = useState<number | null>(null);
   const [title, setTitle] = useState('');
+  const [titleEn, setTitleEn] = useState('');
   const [tourCode, setTourCode] = useState('VH-001');
   const [category, setCategory] = useState<TourCategorySlug>('trong-nuoc');
   const [badgeText, setBadgeText] = useState('Ưu đãi');
@@ -53,6 +54,7 @@ export default function AddTourPage() {
   const [newGalleryUrl, setNewGalleryUrl] = useState('');
 
   const [summary, setSummary] = useState('');
+  const [summaryEn, setSummaryEn] = useState('');
   const [highlights, setHighlights] = useState<string[]>(['']);
   const [itinerary, setItinerary] = useState<TourItineraryDay[]>(createEmptyItinerary());
 
@@ -82,6 +84,7 @@ export default function AddTourPage() {
   const resetForm = () => {
     setEditingId(null);
     setTitle('');
+    setTitleEn('');
     setTourCode(`VH-${Math.floor(100 + Math.random() * 900)}`);
     setCategory('trong-nuoc');
     setBadgeText('Ưu đãi');
@@ -141,6 +144,7 @@ export default function AddTourPage() {
       id,
       slug,
       title: title.trim(),
+      titleEn: titleEn.trim() || undefined,
       tourCode: tourCode.trim() || `VH-${String(id).slice(-3)}`,
       category,
       categoryName: CATEGORY_NAME_MAP[category],
@@ -160,6 +164,7 @@ export default function AddTourPage() {
       image: image.trim() || '/assets/img/phu-quoc.jpg',
       gallery: cleanGallery.length > 0 ? cleanGallery : [image.trim() || '/assets/img/phu-quoc.jpg'],
       summary: summary.trim() || title.trim(),
+      summaryEn: summaryEn.trim() || undefined,
       highlights: highlights.map((s) => s.trim()).filter(Boolean),
       itinerary: itinerary.filter((d) => d.title.trim() || d.description.trim()),
       inclusions: inclusions.map((s) => s.trim()).filter(Boolean),
@@ -324,7 +329,7 @@ export default function AddTourPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '14px' }}>
             <div>
-              <label className="vh-filter-label">Tên Tour Du Lịch *</label>
+              <label className="vh-filter-label">Tên Tour Du Lịch (Tiếng Việt) *</label>
               <input
                 required
                 type="text"
@@ -347,6 +352,18 @@ export default function AddTourPage() {
                 style={{ width: '100%' }}
               />
             </div>
+          </div>
+
+          <div>
+            <label className="vh-filter-label">Tên Tour Tiếng Anh (English Title - Tùy chọn)</label>
+            <input
+              type="text"
+              value={titleEn}
+              onChange={(e) => setTitleEn(e.target.value)}
+              placeholder="VD: Phu Quoc 3D2N: Grand World – Hon Thom Cable Car"
+              className="vh-search-input"
+              style={{ width: '100%' }}
+            />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
@@ -613,12 +630,24 @@ export default function AddTourPage() {
           </h2>
 
           <div>
-            <label className="vh-filter-label">Giới Thiệu Tổng Quan Tour</label>
+            <label className="vh-filter-label">Giới Thiệu Tổng Quan Tour (Tiếng Việt)</label>
             <textarea
               rows={3}
               value={summary}
               onChange={(e) => setSummary(e.target.value)}
               placeholder="Mô tả ngắn gọn sức hấp dẫn của hành trình..."
+              className="vh-search-input"
+              style={{ width: '100%' }}
+            />
+          </div>
+
+          <div>
+            <label className="vh-filter-label">Mô Tả Tiếng Anh (English Summary - Tùy chọn)</label>
+            <textarea
+              rows={2}
+              value={summaryEn}
+              onChange={(e) => setSummaryEn(e.target.value)}
+              placeholder="Short English description of the tour..."
               className="vh-search-input"
               style={{ width: '100%' }}
             />

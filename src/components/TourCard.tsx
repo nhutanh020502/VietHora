@@ -1,7 +1,12 @@
-import Link from 'next/link';
-import { Tour } from '@/data/tours';
+'use client';
 
-export default function TourCard({ tour }: { tour: Tour }) {
+import Link from 'next/link';
+import { Tour, getLocalizedTour } from '@/data/tours';
+import { useLanguage } from '@/lib/i18n';
+
+export default function TourCard({ tour: rawTour }: { tour: Tour }) {
+  const { lang, t } = useLanguage();
+  const tour = getLocalizedTour(rawTour, lang);
   const detailHref = `/tour/${tour.slug}`;
 
   return (
@@ -13,7 +18,6 @@ export default function TourCard({ tour }: { tour: Tour }) {
         {tour.badgeText && <span className="vh-tour-badge-pill">{tour.badgeText}</span>}
       </div>
 
-      {/* Floating White Card overlapping photo bottom */}
       <div className="vh-tour-floating-box">
         <h3 className="vh-tour-floating-title">
           <Link href={detailHref}>
@@ -39,7 +43,7 @@ export default function TourCard({ tour }: { tour: Tour }) {
             <path d="M7 16h6" />
           </svg>
           <span>
-            Mã tour: <strong>{tour.tourCode}</strong>
+            {t('Mã tour:', 'Tour code:')} <strong>{tour.tourCode}</strong>
           </span>
         </div>
 
@@ -57,19 +61,19 @@ export default function TourCard({ tour }: { tour: Tour }) {
               <polyline points="12 6 12 12 16 14" />
             </svg>
             <span>
-              Số ngày: <strong>{tour.duration}</strong>
+              {t('Thời lượng:', 'Duration:')} <strong>{tour.duration}</strong>
             </span>
           </div>
         </div>
 
         <div className="vh-tour-floating-footer">
           <div>
-            <span className="vh-price-label">Giá từ:</span>
+            <span className="vh-price-label">{t('Giá từ:', 'From:')}</span>
             {tour.priceOld && <span className="vh-price-old">{tour.priceOld}</span>}
             <span className="vh-price-new">{tour.priceNew}</span>
           </div>
           <Link href={detailHref} className="vh-tour-cta-btn">
-            Xem chi tiết
+            {t('Xem chi tiết', 'View Details')}
           </Link>
         </div>
       </div>

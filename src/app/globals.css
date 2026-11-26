@@ -92,6 +92,39 @@ a {
   opacity: 0.9;
 }
 
+.vh-header-slogan {
+  text-align: center;
+  padding: 0 16px;
+}
+
+.vh-slogan-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #a7833e;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.vh-slogan-main {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.25;
+}
+
+.vh-slogan-main em {
+  color: #a7833e;
+  font-style: italic;
+}
+
+@media (max-width: 960px) {
+  .vh-header-slogan {
+    display: none;
+  }
+}
+
 .vh-nav-strip {
   background: linear-gradient(90deg, #0b2039 0%, #102b4e 50%, #173b63 100%);
   border-bottom: 2px solid var(--gold);
@@ -1141,4 +1174,106 @@ a {
   background: var(--navy);
   color: var(--white);
   border-color: var(--navy);
+}
+
+/* ── Floating Quick Contact & Back-to-Top ─────────────────────────────────── */
+.vh-floating-contact {
+  position: fixed;
+  right: 22px;
+  bottom: 24px;
+  z-index: 950;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.vh-fab {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(16, 43, 78, 0.24);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.vh-fab:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 12px 28px rgba(16, 43, 78, 0.34);
+}
+
+.vh-fab-messenger {
+  background: linear-gradient(135deg, #0099ff 0%, #006aff 100%);
+}
+
+.vh-fab-zalo {
+  background: linear-gradient(135deg, #007bff 0%, #0056d6 100%);
+}
+
+.vh-fab-phone {
+  background: linear-gradient(135deg, #0a7d66 0%, #065f4d 100%);
+}
+
+.vh-fab-top {
+  background: linear-gradient(135deg, #102b4e 0%, #0b2039 100%);
+  border: 1.5px solid var(--gold);
+  width: 44px;
+  height: 44px;
+}
+
+.vh-fab-messenger::before,
+.vh-fab-zalo::before,
+.vh-fab-phone::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0.35;
+  animation: vhPulseRing 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+.vh-fab-messenger::before {
+  border-color: #0084ff;
+}
+.vh-fab-zalo::before {
+  border-color: #0068ff;
+  animation-delay: 0.4s;
+}
+.vh-fab-phone::before {
+  border-color: #0a7d66;
+  animation-delay: 0.8s;
+}
+
+@keyframes vhPulseRing {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.28);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .vh-floating-contact {
+    right: 14px;
+    bottom: 16px;
+    gap: 10px;
+  }
+  .vh-fab {
+    width: 44px;
+    height: 44px;
+  }
 }

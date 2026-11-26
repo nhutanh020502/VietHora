@@ -2,19 +2,21 @@
 
 import { useRef } from 'react';
 import { TESTIMONIALS } from '@/data/content';
+import { useLanguage } from '@/lib/i18n';
 
 export default function TestimonialsSection() {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const { t } = useLanguage();
 
   return (
     <section className="vh-section">
       <div className="vh-section-header">
         <div>
           <p className="vh-eyebrow" style={{ color: '#a7833e', marginBottom: '6px' }}>
-            CẢM NHẬN THỰC TẾ
+            {t('CẢM NHẬN THỰC TẾ', 'GUEST STORIES')}
           </p>
           <h2 className="vh-section-title">
-            Khách hàng nói gì <em>về chúng tôi</em>
+            {t('Khách hàng nói gì', 'What our guests')} <em>{t('về chúng tôi', 'say about us')}</em>
           </h2>
         </div>
         <div className="vh-slider-nav">

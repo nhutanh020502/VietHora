@@ -1,10 +1,19 @@
+'use client';
+
+import { useLanguage } from '@/lib/i18n';
+
 export default function WhyChooseSection() {
+  const { t } = useLanguage();
+
   const values = [
     {
       num: '01',
-      title: 'An toàn tuyệt đối',
-      tag: 'Tiêu chuẩn vận hành',
-      desc: 'Chuẩn bị chu đáo, xe du lịch đời mới, đối tác lưu trú chọn lọc và thông tin minh bạch rõ ràng trên mọi cung đường.',
+      title: t('An toàn tuyệt đối', 'Safety First'),
+      tag: t('Tiêu chuẩn vận hành', 'Operational Standard'),
+      desc: t(
+        'Chuẩn bị chu đáo, xe du lịch đời mới, đối tác lưu trú chọn lọc và thông tin minh bạch rõ ràng trên mọi cung đường.',
+        'Thoughtful preparation, modern transport, vetted hotel partners, and transparent information on every route.'
+      ),
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -14,9 +23,12 @@ export default function WhyChooseSection() {
     },
     {
       num: '02',
-      title: 'Gần gũi bản địa',
-      tag: 'Trải nghiệm chân thực',
-      desc: 'Kết nối chân thành với cộng đồng địa phương, thưởng thức ẩm thực đặc sản và lắng nghe những câu chuyện văn hóa.',
+      title: t('Gần gũi bản địa', 'Local Closeness'),
+      tag: t('Trải nghiệm chân thực', 'Authentic Experience'),
+      desc: t(
+        'Kết nối chân thành với cộng đồng địa phương, thưởng thức ẩm thực đặc sản và lắng nghe những câu chuyện văn hóa.',
+        'Connect warmly with local communities, savor authentic regional cuisine, and discover living cultural stories.'
+      ),
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -28,9 +40,12 @@ export default function WhyChooseSection() {
     },
     {
       num: '03',
-      title: 'Du lịch bền vững',
-      tag: 'Trách nhiệm & Tận tâm',
-      desc: 'Tôn trọng cảnh quan thiên nhiên, gìn giữ giá trị di sản Việt Nam và đồng hành có trách nhiệm cùng thế hệ tương lai.',
+      title: t('Du lịch bền vững', 'Sustainability'),
+      tag: t('Trách nhiệm & Tận tâm', 'Responsible Travel'),
+      desc: t(
+        'Tôn trọng cảnh quan thiên nhiên, giữ gìn giá trị di sản Việt Nam và đồng hành có trách nhiệm cùng thế hệ tương lai.',
+        'Respect natural landscapes, preserve Vietnam heritage values, and travel responsibly for future generations.'
+      ),
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M12 22c4-4 6-7.5 6-11a6 6 0 1 0-12 0c0 3.5 2 7 6 11z" />
@@ -53,20 +68,23 @@ export default function WhyChooseSection() {
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 42px' }}>
           <p className="vh-eyebrow" style={{ marginBottom: '8px' }}>
-            ĐIỀU LÀM NÊN KHÁC BIỆT
+            {t('ĐIỀU LÀM NÊN KHÁC BIỆT', 'WHAT SETS US APART')}
           </p>
           <h2 className="vh-section-title" style={{ color: '#ffffff', marginBottom: '12px' }}>
-            Giá trị trên mỗi <em>hành trình</em>
+            {t('Giá trị trên mỗi', 'Values on every')} <em>{t('hành trình', 'journey')}</em>
           </h2>
           <p style={{ color: '#cbd5e1', fontSize: '15px', margin: 0 }}>
-            Từng trải nghiệm tại VIEHORA TRAVEL đều được xây dựng từ sự tận tâm, uy tín và trách nhiệm.
+            {t(
+              'Từng trải nghiệm tại VIEHORA TRAVEL đều được xây dựng từ sự tận tâm, uy tín và trách nhiệm.',
+              'Every experience at VIEHORA TRAVEL is crafted with dedication, integrity, and care.'
+            )}
           </p>
         </div>
 
         <div className="vh-values-grid" style={{ marginTop: 0 }}>
           {values.map((v) => (
             <article
-              key={v.title}
+              key={v.num}
               style={{
                 background: 'rgba(255, 255, 255, 0.06)',
                 backdropFilter: 'blur(10px)',

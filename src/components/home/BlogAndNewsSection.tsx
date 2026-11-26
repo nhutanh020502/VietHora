@@ -1,22 +1,26 @@
+'use client';
+
 import Link from 'next/link';
 import { ARTICLES } from '@/data/content';
+import { useLanguage } from '@/lib/i18n';
 
 export default function BlogAndNewsSection() {
   const featuredArticles = ARTICLES.slice(0, 4);
+  const { t } = useLanguage();
 
   return (
     <section className="vh-section" style={{ paddingBottom: '72px' }}>
       <div className="vh-section-header">
         <div>
           <p className="vh-eyebrow" style={{ color: '#a7833e', marginBottom: '6px' }}>
-            CẨM NANG &amp; TIN TỨC
+            {t('CẨM NANG & TIN TỨC', 'TRAVEL JOURNAL')}
           </p>
           <h2 className="vh-section-title">
-            Gợi ý cho <em>chuyến đi</em>
+            {t('Gợi ý cho', 'Stories &')} <em>{t('chuyến đi', 'travel tips')}</em>
           </h2>
         </div>
         <Link href="/tin-tuc" className="vh-btn-navy-outline">
-          Xem tất cả &rarr;
+          {t('Xem tất cả →', 'View all →')}
         </Link>
       </div>
 
@@ -61,7 +65,7 @@ export default function BlogAndNewsSection() {
               >
                 <span style={{ color: 'var(--muted)' }}>{post.author}</span>
                 <Link href={`/tin-tuc/${post.slug}`} style={{ color: 'var(--navy)', fontWeight: 700 }}>
-                  Đọc tiếp ↗
+                  {t('Đọc tiếp ↗', 'Read more ↗')}
                 </Link>
               </div>
             </div>
